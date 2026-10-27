@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Enterprise RAG · Workspaces</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Enterprise RAG home"><span class="brand-mark" aria-hidden="true">e</span> Enterprise RAG</a>
+    <span class="header-note">Your knowledge, connected.</span>
+  </header>
+  <main>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <p id="loading" class="muted">Loading your workspace…</p>
+    <button id="retry" type="button" class="secondary" hidden>Try again</button>
+
+    <section id="auth-view" class="auth-view" aria-labelledby="auth-title" hidden>
+      <p class="eyebrow">GET STARTED</p>
+      <h1 id="auth-title">Welcome back.</h1>
+      <p id="auth-description" class="muted">Sign in to your account and pick up where you left off.</p>
+      <div class="card">
+        <div class="switcher" aria-label="Account access">
+          <button id="login-tab" type="button" class="tab active" aria-pressed="true">Sign in</button>
+          <button id="signup-tab" type="button" class="tab" aria-pressed="false">Create account</button>
+        </div>
+        <form id="auth-form">
+          <div id="name-field" class="field" hidden>
+            <label for="name">Your name</label>
+            <input id="name" name="name" autocomplete="name" maxlength="120" placeholder="Alex Morgan">
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="username" required maxlength="254" placeholder="you@company.com">
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input id="password" name="password" type="password" autocomplete="current-password" required minlength="15" maxlength="128" aria-describedby="password-help">
+              <button id="toggle-password" type="button" class="text-button" aria-controls="password" aria-pressed="false">Show</button>
+            </div>
+            <small id="password-help">Use 15–128 characters.</small>
+          </div>
+          <button id="auth-submit" class="primary full-width" type="submit">Sign in</button>
+        </form>
+      </div>
+      <p class="footnote">One account. A workspace for every team.</p>
+    </section>
+
+    <section id="workspace-view" aria-labelledby="workspace-title" hidden>
+      <div class="account-heading">
+        <div>
+          <p class="eyebrow">YOUR ACCOUNT</p>
+          <h1 id="workspace-title">Your workspaces</h1>
+          <p class="muted"><span id="user-name"></span><span id="user-email"></span></p>
+        </div>
+        <button id="logout" class="secondary" type="button">Sign out</button>
+      </div>
+      <div class="workspace-grid">
+        <section class="card" aria-labelledby="workspace-list-title">
+          <div class="section-heading"><h2 id="workspace-list-title">Workspaces</h2><span id="workspace-count" class="count">0</span></div>
+          <p class="muted section-description">Choose a workspace to make it active.</p>
+          <div id="workspace-list"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">+</span>
+            <h3>A fresh start.</h3>
+            <p class="muted">Create your first workspace to get started.</p>
+          </div>
+        </section>
+        <section class="card" aria-labelledby="create-title">
+          <h2 id="create-title">Create a workspace</h2>
+          <p class="muted section-description">Give your team a space of its own. You’ll join as the owner.</p>
+          <form id="tenant-form" hidden>
+            <div class="field">
+              <label for="workspace-name">Workspace name</label>
+              <input id="workspace-name" name="name" required maxlength="120" placeholder="Acme Enterprise">
+              <small>Names can repeat. Each workspace has its own identity.</small>
+            </div>
+            <button class="primary" type="submit">Create workspace <span aria-hidden="true">↗</span></button>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer>Enterprise RAG <span aria-hidden="true">·</span> Built around your workspace.</footer>
+</body>
+</html>
